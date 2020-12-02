@@ -14,6 +14,7 @@ namespace UprojectShortcuts
     /// </summary>
     enum UprojectCommandType
     {
+        LaunchEditor,
         LaunchGame,
         GenerateVisualStudioProjectFiles,
         SwitchUnrealEngineVersion,
@@ -32,8 +33,9 @@ namespace UprojectShortcuts
         /// <summary>
         /// Unreal Project File subkeys registered in the Windows registry.
         /// </summary>
-        private static IDictionary<UprojectCommandType, string> CommandFileNameMap = new IDictionary<UprojectCommandType, string>()
+        private static Dictionary<UprojectCommandType, string> CommandFileNameMap = new Dictionary<UprojectCommandType, string>()
         {
+            { UprojectCommandType.LaunchEditor, "open" },
             { UprojectCommandType.LaunchGame, "run" },
             { UprojectCommandType.GenerateVisualStudioProjectFiles, "rungenproj" },
             { UprojectCommandType.SwitchUnrealEngineVersion, "switchversion" }
@@ -85,7 +87,7 @@ namespace UprojectShortcuts
                 return;
             }
 
-            string Path = $"Unreal.ProjectFile\\shell{ CommandFileNameMap[CommandType] }\\command";
+            string Path = $@"Unreal.ProjectFile\shell\{ CommandFileNameMap[CommandType] }\command";
             RegistryKey Key = Registry.ClassesRoot.OpenSubKey(Path);
             if (Key == null)
             {
@@ -99,7 +101,7 @@ namespace UprojectShortcuts
                 return;
             }
 
-            string Command = Key.GetValue("");
+            string Command = (string)Key.GetValue("");
             Command = Command.Replace("%1", ProjectFilePath);
 
             ProcessStartInfo StartInfo = new ProcessStartInfo(Command);

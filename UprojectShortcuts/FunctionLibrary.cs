@@ -1,4 +1,7 @@
 ﻿using System.IO;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -24,7 +27,17 @@ namespace UprojectShortcuts
         /// <summary>
         /// Unreal Engine project file extension.
         /// </summary>
-        public static readonly string UprojectExtension = "uproject";
+        private static readonly string UnrealProjectFileExtension = "uproject";
+
+        /// <summary>
+        /// Unreal Project File subkeys registered in the Windows registry.
+        /// </summary>
+        private static IDictionary<UprojectCommandType, string> CommandFileNameMap = new IDictionary<UprojectCommandType, string>()
+        {
+            { UprojectCommandType.LaunchGame, "run" },
+            { UprojectCommandType.GenerateVisualStudioProjectFiles, "rungenproj" },
+            { UprojectCommandType.SwitchUnrealEngineVersion, "switchversion" }
+        };
 
         /// <summary>
         /// Get the path of a .uproject file that is in the same hierarchy as the currently open .sln file.
@@ -40,7 +53,7 @@ namespace UprojectShortcuts
             {
                 string[] Files = Directory.GetFiles(
                     SolutionDirectory, 
-                    "*." + UprojectExtension, 
+                    "*." + UnrealProjectFileExtension, 
                     SearchOption.TopDirectoryOnly
                 );
 
@@ -60,7 +73,40 @@ namespace UprojectShortcuts
         /// <param name="ProjectFilePath">Full file path of the target .uproject file.</param>
         public static void InvokeUprojectCommand(UprojectCommandType CommandType, string ProjectFilePath)
         {
+            if (!File.Exists(ProjectFilePath))
+            {
+                MessageBox.Show(
+                            ".uproject file not found.\r\n" +
+                            "It's not an Unreal Engine project, or the .uproject file isn't in the same directory as the .sln file.",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
+                return;
+            }
 
+            string Path = $"Unreal.ProjectFile\\shell{ CommandFileNameMap[CommandType] }\\command";
+            RegistryKey Key = Registry.ClassesRoot.OpenSubKey(Path);
+            if (Key == null)
+            {
+                MessageBox.Show(
+                            "The registry for Unreal Engine project files can't be found.\r\n" +
+                            "Maybe you don't have Epic Games Launcher installed, or you've never started Unreal Engine.",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
+                return;
+            }
+
+            string Command = Key.GetValue("");
+            Command = Command.Replace("%1", ProjectFilePath);
+
+            ProcessStartInfo StartInfo = new ProcessStartInfo(Command);
+            StartInfo.CreateNoWindow = true;
+            StartInfo.UseShellExecute = false;
+
+            Process.Start(StartInfo);
         }
     }
 }

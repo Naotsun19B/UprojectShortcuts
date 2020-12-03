@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Shell;
+using System;
 using System.ComponentModel.Design;
-using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
 namespace UprojectShortcuts.Commands
@@ -13,12 +13,12 @@ namespace UprojectShortcuts.Commands
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0300;
+        public const int CommandId = 4130;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("3edd2c5f-0604-465c-9acc-1b2bfd4752ae");
+        public static readonly Guid CommandSet = new Guid("f3b56d74-c40f-4e32-9e5c-42af838fe968");
 
         /// <summary>
         /// VS Package that provides this command, not null.

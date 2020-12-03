@@ -54,8 +54,8 @@ namespace UprojectShortcuts
             if (Solution.GetSolutionInfo(out string SolutionDirectory, out _, out _) == VSConstants.S_OK)
             {
                 string[] Files = Directory.GetFiles(
-                    SolutionDirectory, 
-                    "*." + UnrealProjectFileExtension, 
+                    SolutionDirectory,
+                    "*." + UnrealProjectFileExtension,
                     SearchOption.TopDirectoryOnly
                 );
 

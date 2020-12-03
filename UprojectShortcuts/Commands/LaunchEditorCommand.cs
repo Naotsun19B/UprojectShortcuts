@@ -18,7 +18,7 @@ namespace UprojectShortcuts.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("855847d2-4e64-40e5-8f87-9935b75405b7");
+        public static readonly Guid CommandSet = new Guid("f3b56d74-c40f-4e32-9e5c-42af838fe968");
 
         /// <summary>
         /// VS Package that provides this command, not null.

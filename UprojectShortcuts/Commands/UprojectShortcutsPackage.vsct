@@ -15,14 +15,14 @@
         defining some of the constants that we will use inside the file. -->
 
   <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
-  <Extern href="stdidcmd.h"/>
+  <Extern href="stdidcmd.h" />
 
   <!--This header contains the command ids for the menus provided by the shell. -->
-  <Extern href="vsshlids.h"/>
+  <Extern href="vsshlids.h" />
 
   <!--The Commands section is where commands, menus, and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
-  <Commands package="guidShortcutCommandsPackage">
+  <Commands package="guidUprojectShortcutsPackage">
     <!-- Inside this section we have different sub-sections: one for the menus, another
     for the menu groups, one for the buttons (the actual commands), one for the combos
     and the last one for the bitmaps used. Each element is identified by a command id that
@@ -36,8 +36,8 @@
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
-      <Group guid="guidShortcutCommandsPackageCmdSet" id="ShortcutCommandsGroup" priority="0x9999">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      <Group guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
       </Group>
     </Groups>
 
@@ -52,11 +52,32 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidShortcutCommandsPackageCmdSet" id="LaunchGameCommandId" priority="0x0200" type="Button">
-        <Parent guid="guidShortcutCommandsPackageCmdSet" id="ShortcutCommandsGroup" />
+      <Button guid="guidUprojectShortcutsPackageCmdSet" id="LaunchEditorCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Launch Game</ButtonText>
+          <ButtonText>Invoke LaunchEditorCommand</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidLaunchGameCommand" priority="0x0100" type="Button">
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages1" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke LaunchGameCommand</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidGenerateVisualStudioProjectFilesCommand" priority="0x0100" type="Button">
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages2" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke GenerateVisualStudioProjectFilesCommand</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidSwitchUnrealEngineVersionCommand" priority="0x0100" type="Button">
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke SwitchUnrealEngineVersionCommand</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -68,21 +89,54 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\ShortcutCommands.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+      <Bitmap guid="guidImages" href="Resources\LaunchEditorCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages1" href="Resources\LaunchGameCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages2" href="Resources\GenerateVisualStudioProjectFilesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages3" href="Resources\SwitchUnrealEngineVersionCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidShortcutCommandsPackage" value="{6fd07f55-a098-4da8-97d3-5f1fcbf9ffae}" />
+    <GuidSymbol name="guidUprojectShortcutsPackage" value="{6744e8bf-34ec-42e2-9044-aa5b417b648d}" />
 
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidShortcutCommandsPackageCmdSet" value="{c5b5cf03-742f-40ad-b231-96dcbb0606ec}">
-      <IDSymbol name="ShortcutCommandsGroup" value="0x1020" />
-      <IDSymbol name="LaunchGameCommandId" value="0x0200" />
+    <GuidSymbol name="guidUprojectShortcutsPackageCmdSet" value="{f3b56d74-c40f-4e32-9e5c-42af838fe968}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="LaunchEditorCommandId" value="0x0100" />
+      <IDSymbol value="4129" name="cmdidLaunchGameCommand" />
+      <IDSymbol value="4130" name="cmdidGenerateVisualStudioProjectFilesCommand" />
+      <IDSymbol value="4131" name="cmdidSwitchUnrealEngineVersionCommand" />
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{3a858fb7-ed9d-4255-908c-5eae0fee4b2e}" >
+    <GuidSymbol name="guidImages" value="{a9ceda22-4f84-4eb3-95fd-e2f08dcd8019}">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{987b3a31-acff-4efd-a17b-6686b54b8128}" name="guidImages1">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{9be5dcc6-9694-4fa1-84fc-79cddad91a73}" name="guidImages2">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{9cdd596f-8ae1-4456-8bb1-009b028f255e}" name="guidImages3">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

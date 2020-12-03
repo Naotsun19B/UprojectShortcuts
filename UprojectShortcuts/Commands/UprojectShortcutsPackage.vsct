@@ -36,7 +36,7 @@
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
-      <Group guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+      <Group guid="guidUprojectShortcutsPackageCmdSet" id="UprojectShortcutsGroup" priority="0x0600">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
       </Group>
     </Groups>
@@ -53,28 +53,28 @@
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidUprojectShortcutsPackageCmdSet" id="LaunchEditorCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="UprojectShortcutsGroup" />
         <Icon guid="guidImages" id="bmpPicLaunchEditor" />
         <Strings>
           <ButtonText>Launch Editor</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidLaunchGameCommand" priority="0x0100" type="Button">
-        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="guidUprojectShortcutsPackageCmdSet" id="LaunchGameCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="UprojectShortcutsGroup" />
         <Icon guid="guidImages" id="bmpPicLaunchGame" />
         <Strings>
           <ButtonText>Launch Game</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidGenerateVisualStudioProjectFilesCommand" priority="0x0100" type="Button">
-        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="guidUprojectShortcutsPackageCmdSet" id="GenerateVisualStudioProjectFilesCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="UprojectShortcutsGroup" />
         <Icon guid="guidImages" id="bmpPicGenerateVisualStudioProjectFiles" />
         <Strings>
           <ButtonText>Generate Visual Studio Project Files</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidSwitchUnrealEngineVersionCommand" priority="0x0100" type="Button">
-        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="guidUprojectShortcutsPackageCmdSet" id="SwitchUnrealEngineVersionCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidUprojectShortcutsPackageCmdSet" id="UprojectShortcutsGroup" />
         <Icon guid="guidImages" id="bmpPicSwitchUnrealEngineVersion" />
         <Strings>
           <ButtonText>Switch Unreal Engine Version</ButtonText>
@@ -93,17 +93,24 @@
     </Bitmaps>
   </Commands>
 
+  <KeyBindings>
+    <KeyBinding guid="guidUprojectShortcutsPackageCmdSet" id="LaunchEditorCommandId" editor="guidVSStd97" key1="E" mod1="ALT" />
+    <KeyBinding guid="guidUprojectShortcutsPackageCmdSet" id="LaunchGameCommandId" editor="guidVSStd97" key1="P" mod1="ALT"  />
+    <KeyBinding guid="guidUprojectShortcutsPackageCmdSet" id="GenerateVisualStudioProjectFilesCommandId" editor="guidVSStd97" key1="R" mod1="ALT" />
+    <KeyBinding guid="guidUprojectShortcutsPackageCmdSet" id="SwitchUnrealEngineVersionCommandId" editor="guidVSStd97" key1="S" mod1="ALT"  />
+  </KeyBindings>
+
   <Symbols>
     <!-- This is the package guid. -->
     <GuidSymbol name="guidUprojectShortcutsPackage" value="{6744e8bf-34ec-42e2-9044-aa5b417b648d}" />
 
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidUprojectShortcutsPackageCmdSet" value="{f3b56d74-c40f-4e32-9e5c-42af838fe968}">
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="UprojectShortcutsGroup" value="0x1020" />
       <IDSymbol name="LaunchEditorCommandId" value="0x0100" />
-      <IDSymbol name="cmdidLaunchGameCommand" value="4129" />
-      <IDSymbol name="cmdidGenerateVisualStudioProjectFilesCommand" value="4130" />
-      <IDSymbol name="cmdidSwitchUnrealEngineVersionCommand" value="4131" />
+      <IDSymbol name="LaunchGameCommandId" value="4129" />
+      <IDSymbol name="GenerateVisualStudioProjectFilesCommandId" value="4130" />
+      <IDSymbol name="SwitchUnrealEngineVersionCommandId" value="4131" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{a9ceda22-4f84-4eb3-95fd-e2f08dcd8019}">

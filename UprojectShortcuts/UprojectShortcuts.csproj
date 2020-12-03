@@ -55,8 +55,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\GenerateVisualStudioProjectFilesCommand.cs" />
+    <Compile Include="Commands\LaunchEditorCommand.cs" />
     <Compile Include="Commands\LaunchGameCommand.cs" />
     <Compile Include="Commands\ShortcutCommandsPackage.cs" />
+    <Compile Include="Commands\SwitchUnrealEngineVersionCommand.cs" />
     <Compile Include="FunctionLibrary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

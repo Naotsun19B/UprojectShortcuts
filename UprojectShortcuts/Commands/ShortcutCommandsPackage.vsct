@@ -52,7 +52,7 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidShortcutCommandsPackageCmdSet" id="LaunchGameCommandId" priority="0x0100" type="Button">
+      <Button guid="guidShortcutCommandsPackageCmdSet" id="LaunchGameCommandId" priority="0x0200" type="Button">
         <Parent guid="guidShortcutCommandsPackageCmdSet" id="ShortcutCommandsGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
@@ -79,7 +79,7 @@
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidShortcutCommandsPackageCmdSet" value="{c5b5cf03-742f-40ad-b231-96dcbb0606ec}">
       <IDSymbol name="ShortcutCommandsGroup" value="0x1020" />
-      <IDSymbol name="LaunchGameCommandId" value="0x0100" />
+      <IDSymbol name="LaunchGameCommandId" value="0x0200" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{3a858fb7-ed9d-4255-908c-5eae0fee4b2e}" >

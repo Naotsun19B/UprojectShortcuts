@@ -8,17 +8,17 @@ namespace UprojectShortcuts.Commands
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class LaunchGameCommand
+    internal sealed class GenerateVisualStudioProjectFilesCommand
     {
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0200;
+        public const int CommandId = 0x0300;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("c5b5cf03-742f-40ad-b231-96dcbb0606ec");
+        public static readonly Guid CommandSet = new Guid("3edd2c5f-0604-465c-9acc-1b2bfd4752ae");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -26,12 +26,12 @@ namespace UprojectShortcuts.Commands
         private readonly AsyncPackage Package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LaunchGameCommand"/> class.
+        /// Initializes a new instance of the <see cref="GenerateVisualStudioProjectFilesCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="Package">Owner package, not null.</param>
         /// <param name="CommandService">Command service to add command to, not null.</param>
-        private LaunchGameCommand(AsyncPackage Package, OleMenuCommandService CommandService)
+        private GenerateVisualStudioProjectFilesCommand(AsyncPackage Package, OleMenuCommandService CommandService)
         {
             this.Package = Package ?? throw new ArgumentNullException(nameof(Package));
             CommandService = CommandService ?? throw new ArgumentNullException(nameof(CommandService));
@@ -44,7 +44,7 @@ namespace UprojectShortcuts.Commands
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static LaunchGameCommand Instance
+        public static GenerateVisualStudioProjectFilesCommand Instance
         {
             get;
             private set;
@@ -72,7 +72,7 @@ namespace UprojectShortcuts.Commands
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(Package.DisposalToken);
 
             OleMenuCommandService CommandService = await Package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
-            Instance = new LaunchGameCommand(Package, CommandService);
+            Instance = new GenerateVisualStudioProjectFilesCommand(Package, CommandService);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace UprojectShortcuts.Commands
 
             string FilePath = FunctionLibrary.GetCurrentUprojectFilePath();
             FunctionLibrary.InvokeUprojectCommand(
-                UprojectCommandType.LaunchGame, 
+                UprojectCommandType.GenerateVisualStudioProjectFiles,
                 FilePath
             );
         }

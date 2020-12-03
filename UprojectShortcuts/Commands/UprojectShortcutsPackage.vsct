@@ -54,30 +54,30 @@
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidUprojectShortcutsPackageCmdSet" id="LaunchEditorCommandId" priority="0x0100" type="Button">
         <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPicLaunchEditor" />
         <Strings>
-          <ButtonText>Invoke LaunchEditorCommand</ButtonText>
+          <ButtonText>Launch Editor</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidLaunchGameCommand" priority="0x0100" type="Button">
         <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
-        <Icon guid="guidImages1" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPicLaunchGame" />
         <Strings>
-          <ButtonText>Invoke LaunchGameCommand</ButtonText>
+          <ButtonText>Launch Game</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidGenerateVisualStudioProjectFilesCommand" priority="0x0100" type="Button">
         <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
-        <Icon guid="guidImages2" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPicGenerateVisualStudioProjectFiles" />
         <Strings>
-          <ButtonText>Invoke GenerateVisualStudioProjectFilesCommand</ButtonText>
+          <ButtonText>Generate Visual Studio Project Files</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidUprojectShortcutsPackageCmdSet" id="cmdidSwitchUnrealEngineVersionCommand" priority="0x0100" type="Button">
         <Parent guid="guidUprojectShortcutsPackageCmdSet" id="MyMenuGroup" />
-        <Icon guid="guidImages3" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPicSwitchUnrealEngineVersion" />
         <Strings>
-          <ButtonText>Invoke SwitchUnrealEngineVersionCommand</ButtonText>
+          <ButtonText>Switch Unreal Engine Version</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -89,10 +89,7 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\LaunchEditorCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages1" href="Resources\LaunchGameCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages2" href="Resources\GenerateVisualStudioProjectFilesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
-      <Bitmap guid="guidImages3" href="Resources\SwitchUnrealEngineVersionCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\ShortcutCommands.png" usedList="bmpPicLaunchEditor, bmpPicLaunchGame, bmpPicGenerateVisualStudioProjectFiles, bmpPicSwitchUnrealEngineVersion, bmpPicUnuse1, bmpPicUnuse2" />
     </Bitmaps>
   </Commands>
 
@@ -104,45 +101,19 @@
     <GuidSymbol name="guidUprojectShortcutsPackageCmdSet" value="{f3b56d74-c40f-4e32-9e5c-42af838fe968}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="LaunchEditorCommandId" value="0x0100" />
-      <IDSymbol value="4129" name="cmdidLaunchGameCommand" />
-      <IDSymbol value="4130" name="cmdidGenerateVisualStudioProjectFilesCommand" />
-      <IDSymbol value="4131" name="cmdidSwitchUnrealEngineVersionCommand" />
+      <IDSymbol name="cmdidLaunchGameCommand" value="4129" />
+      <IDSymbol name="cmdidGenerateVisualStudioProjectFilesCommand" value="4130" />
+      <IDSymbol name="cmdidSwitchUnrealEngineVersionCommand" value="4131" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{a9ceda22-4f84-4eb3-95fd-e2f08dcd8019}">
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
+      <IDSymbol name="bmpPicLaunchEditor" value="1" />
+      <IDSymbol name="bmpPicLaunchGame" value="2" />
+      <IDSymbol name="bmpPicGenerateVisualStudioProjectFiles" value="3" />
+      <IDSymbol name="bmpPicSwitchUnrealEngineVersion" value="4" />
+      <IDSymbol name="bmpPicUnuse1" value="5" />
+      <IDSymbol name="bmpPicUnuse2" value="6" />
     </GuidSymbol>
-  
-    <GuidSymbol value="{987b3a31-acff-4efd-a17b-6686b54b8128}" name="guidImages1">
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
-    </GuidSymbol>
-  
-    <GuidSymbol value="{9be5dcc6-9694-4fa1-84fc-79cddad91a73}" name="guidImages2">
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
-    </GuidSymbol>
-  
-    <GuidSymbol value="{9cdd596f-8ae1-4456-8bb1-009b028f255e}" name="guidImages3">
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
-    </GuidSymbol>
+    
   </Symbols>
 </CommandTable>

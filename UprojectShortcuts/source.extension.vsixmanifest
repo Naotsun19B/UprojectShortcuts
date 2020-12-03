@@ -5,8 +5,8 @@
         <DisplayName>UprojectShortcuts</DisplayName>
         <Description xml:space="preserve">An extension for Unreal Engine developers that allows you to use toolbars and shortcut keys to perform operations from the right-click menu of .uproject files.</Description>
         <MoreInfo>https://github.com/Naotsun19B/UprojectShortcuts</MoreInfo>
-        <Icon>Resources\Icon.png</Icon>
-        <PreviewImage>Resources\Icon.png</PreviewImage>
+        <Icon>Icon.png</Icon>
+        <PreviewImage>Icon.png</PreviewImage>
         <Tags>Unreal Enigne</Tags>
     </Metadata>
     <Installation>
